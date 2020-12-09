@@ -1,13 +1,23 @@
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 from scrap_linkedin.spiders.spider import LinkedinSpider
+from data_functions import *
 
 def ask_search()->str:
     return input("¿Que deseas buscar?: ")
 
 if __name__ == '__main__':
-    process = CrawlerProcess(get_project_settings())
+    csv, json, nombre, results_limit, ordered_results = define_options()
 
-    # 'followall' is the name of one of the spiders of the project.
-    process.crawl(LinkedinSpider,search=ask_search())
-    process.start() # the script will block here until the crawling is finished
+    print(csv, json, nombre, results_limit, ordered_results)
+    process = CrawlerProcess(get_project_settings())
+    process.crawl(LinkedinSpider,  search=ask_search(), results_limit = results_limit)
+    process.start() # Se bloquea acá hasta terminar
+
+    dataframe = create_dataframe("linkedin_items.csv")
+    if ordered_results:
+        dataframe = order_jobs_by_post_date(dataframe)
+    if csv:
+        save_dataframe_as_csv(dataframe, f'{nombre}.csv')
+    if json:
+        save_dataframe_as_json(dataframe, f'{nombre}.json')

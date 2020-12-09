@@ -7,8 +7,9 @@ from scrap_linkedin.utils.url_extractor import get_urls
 
 
 class LinkedinSpider(CrawlSpider):
-    def __init__(self, search: str):
+    def __init__(self, search: str, results_limit: int):
         self.__start_urls = get_urls(search)
+        self.__results_limit = results_limit
         super(LinkedinSpider, self).__init__()
 
     @property
@@ -42,6 +43,6 @@ class LinkedinSpider(CrawlSpider):
         items['job_sector'] = response.xpath('/html/body/main/section[1]/section[3]/ul/li[4]/span/text()').get()
         items['job_role'] = response.xpath('/html/body/main/section[1]/section[3]/ul/li[3]/span/text()').get()
         self.item_count += 1
-        if self.item_count > 10:
+        if self.item_count > self.__results_limit:
             raise CloseSpider('item_exceeded')
         yield items
