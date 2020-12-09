@@ -14,6 +14,7 @@ if __name__ == '__main__':
     process.start() # Se bloquea acá hasta terminar
 
     dataframe = create_dataframe("linkedin_items.csv")
+
     if ordered_results:
         dataframe = order_jobs_by_post_date(dataframe)
     if csv:

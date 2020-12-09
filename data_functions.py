@@ -44,11 +44,11 @@ def define_options():
     nombre = "data"
     results_limit = 999999
     ordered_results = False
-    help = "--csv:  Exporta los datos en CSV. (Opción por DEFAULT)" \
+    help = "--csv:  Exporta los datos en CSV. (Opción por DEFAULT)." \
            "\n--json:  Exporta los datos en JSON." \
-           "\n--nombre:  Para definir el nombre del archivo de datos (DEFAULT NAME: data)" \
-           "\n--cant_result: Sirve para definir la cantidad de registros a scrapear (DEFAULT: SIN LÍMITE)" \
-           "\n--results_ordered: Sirve para ordernar o no los trabajos por fecha de publicación (DEFAULT: DESACTIVADO)" \
+           "\n--nombre: valor - Para definir el nombre del archivo de datos (NOMBRE POR DEFAULT: data)." \
+           "\n--cant_result: valor - Sirve para definir la cantidad de registros a scrapear (DEFAULT: SIN LÍMITE)." \
+           "\n--ordered_results: Sirve para ordenar o no los trabajos por fecha de publicación (DEFAULT: DESACTIVADO)." \
            "\n"
     try:
         opt, arg = getopt.getopt(sys.argv[1:],'', ['csv', 'json', 'nombre=', 'cant_result=', 'ordered_results',"help"])
@@ -82,9 +82,7 @@ def define_options():
         csv = True
 
     return csv, json, nombre, results_limit, ordered_results
-    # limite de resultados.DEFAULT UNLIMITED
-    # nombre de archivo
-    # Orden por fecha de publicacion (SI/NO)
+
 
 def delete_file(file_name: str):
     os.remove(file_name)
