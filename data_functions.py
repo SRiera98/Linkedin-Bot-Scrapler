@@ -2,6 +2,7 @@ import pandas as pd
 import json
 import getopt
 import sys
+import os
 
 def create_dataframe(csv) -> pd.DataFrame:
     return pd.read_csv(csv)
@@ -38,18 +39,22 @@ def save_dataframe_as_json(dataframe, path: str):
         file.write(save_data.decode('utf8'))
 
 def define_options():
-    csv = True
+    csv = False
     json = False
     nombre = "data"
     results_limit = 999999
     ordered_results = False
     help = "--csv:  Exporta los datos en CSV. (Opción por DEFAULT)" \
            "\n--json:  Exporta los datos en JSON." \
-           "\n--nombre:  Para definir el nombre del archivo de datos (DEFAULT: data)" \
+           "\n--nombre:  Para definir el nombre del archivo de datos (DEFAULT NAME: data)" \
            "\n--cant_result: Sirve para definir la cantidad de registros a scrapear (DEFAULT: SIN LÍMITE)" \
            "\n--results_ordered: Sirve para ordernar o no los trabajos por fecha de publicación (DEFAULT: DESACTIVADO)" \
            "\n"
-    opt, arg = getopt.getopt(sys.argv[1:],'', ['csv', 'json', 'nombre=', 'cant_result=', 'ordered_results',"help"])
+    try:
+        opt, arg = getopt.getopt(sys.argv[1:],'', ['csv', 'json', 'nombre=', 'cant_result=', 'ordered_results',"help"])
+    except getopt.GetoptError:
+        print("Coloque una opción válida.")
+        sys.exit(0)
     for opt, arg in opt:
         if opt in ('--csv'):
             csv = True
@@ -72,9 +77,14 @@ def define_options():
         elif opt in ('--help'):
             print(help)
             sys.exit(0)
-    if not (csv and json):
+
+    if not csv and not json:
         csv = True
+
     return csv, json, nombre, results_limit, ordered_results
     # limite de resultados.DEFAULT UNLIMITED
     # nombre de archivo
     # Orden por fecha de publicacion (SI/NO)
+
+def delete_file(file_name: str):
+    os.remove(file_name)

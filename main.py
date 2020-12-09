@@ -4,12 +4,11 @@ from scrap_linkedin.spiders.spider import LinkedinSpider
 from data_functions import *
 
 def ask_search()->str:
-    return input("¿Que deseas buscar?: ")
+    return input("What search do you want to scraping?: ")
 
 if __name__ == '__main__':
     csv, json, nombre, results_limit, ordered_results = define_options()
 
-    print(csv, json, nombre, results_limit, ordered_results)
     process = CrawlerProcess(get_project_settings())
     process.crawl(LinkedinSpider,  search=ask_search(), results_limit = results_limit)
     process.start() # Se bloquea acá hasta terminar
@@ -21,3 +20,4 @@ if __name__ == '__main__':
         save_dataframe_as_csv(dataframe, f'{nombre}.csv')
     if json:
         save_dataframe_as_json(dataframe, f'{nombre}.json')
+    delete_file("linkedin_items.csv")
