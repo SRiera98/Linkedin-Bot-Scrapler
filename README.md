@@ -8,15 +8,16 @@ Al momento de ejecutar **main.py** se realiza de la siguiente manera:
 
   - ######  **python3 main.py argumentos (definidos abajo)**
 
-### Comandos o argumentos disponibles
+### Comandos o argumentos disponibles:
 
 
 	--csv:  Exporta los datos en CSV. (Opción por DEFAULT).
 	--json:  Exporta los datos en JSON.
-	--nombre: valor - Para definir el nombre del archivo de datos (NOMBRE POR DEFAULT: data).
+	--file_name: valor - Para definir el nombre del archivo de datos (NOMBRE POR DEFAULT: data).
 	--cant_result: valor - Sirve para definir la cantidad de registros a scrapear (DEFAULT: SIN LÍMITE).
 	--ordered_results: Sirve para ordenar o no los trabajos por fecha de publicación (DEFAULT: DESACTIVADO).
     --help: Nos permite obtener información acerca de los comandos.
+    --world_wide: Nos permite realizar una búsqueda global. (REGIÓN POR DEFAULT: ARGENTINA).
 
 #
 ### ENGLISH DESCRIPTION
@@ -29,12 +30,13 @@ When executing **main.py**, it is done as follows:
 
   - ######  **python3 main.py** arguments (defined below)
 
-### Available commands or arguments
+### Available commands or arguments:
 
 
 	--csv:  Export the data in CSV. (DEFAULT option).
 	--json:  Export the data in JSON.
-	--nombre: value - To define the name of the data file (NAME BY DEFAULT: data).
+	--file_name: value - To define the name of the data file (NAME BY DEFAULT: data).
 	--cant_result: value - It is used to define the number of records to scrape (DEFAULT: UNLIMITED).
 	--ordered_results: It is used to sort or not the works by publication date (DEFAULT: OFF).
     --help: It allows us to obtain information about the commands.
+    --world_wide: Allows us to perform a global search. (DEFAULT REGION: ARGENTINA).
