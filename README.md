@@ -18,7 +18,7 @@ Al momento de ejecutar **main.py** se realiza de la siguiente manera:
 	--ordered_results: Sirve para ordenar o no los trabajos por fecha de publicación (DEFAULT: DESACTIVADO).
     --help: Nos permite obtener información acerca de los comandos.
     --world_wide: Nos permite realizar una búsqueda global. (REGIÓN POR DEFAULT: ARGENTINA).
-
+### Recomendacion: Esta app puede que este violando la sección 8.2 del acuerdo de usuario de Linkedin, sin embargo, no se requiere ninguna cuenta para usar este script. Por lo que se recomienda no estar logueado al momento de su ejecución.
 #
 ### ENGLISH DESCRIPTION
 ### Scraping tool made with the framework:
@@ -40,3 +40,4 @@ When executing **main.py**, it is done as follows:
 	--ordered_results: It is used to sort or not the works by publication date (DEFAULT: OFF).
     --help: It allows us to obtain information about the commands.
     --world_wide: Allows us to perform a global search. (DEFAULT REGION: ARGENTINA).
+### Recommendation: This app may be violating section 8.2 of the Linkedin user agreement, however, no account is required to use this script. Therefore, it is recommended not to be logged in at the time of its execution.
