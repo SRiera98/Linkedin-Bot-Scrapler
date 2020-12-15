@@ -6,7 +6,7 @@
 #     https://docs.scrapy.org/en/latest/topics/settings.html
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-
+import random
 BOT_NAME = 'scrap_linkedin'
 
 SPIDER_MODULES = ['scrap_linkedin.spiders']
@@ -21,8 +21,9 @@ ITEM_PIPELINES = {'scrap_linkedin.pipelines.ScrapLinkedinPipeline': 100}
 # FEED_FORMAT = 'json'
 # FEED_URI = 'result.json'
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = False
+ROBOTSTXT_OBEY = True
 
+USER_AGENT = random.choice(['Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)','Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/W.X.Y.Z‡ Safari/537.36','Googlebot/2.1 (+http://www.google.com/bot.html)'])
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 
